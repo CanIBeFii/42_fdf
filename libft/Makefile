@@ -6,7 +6,7 @@
 #    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 12:27:56 by fialexan          #+#    #+#              #
-#    Updated: 2022/12/30 16:07:31 by fialexan         ###   ########.fr        #
+#    Updated: 2022/12/30 18:00:16 by fialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,10 @@ OBJECTS = $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 
 # COLORS
 
-GREEN = \033[0;32m
-RED = \033[0;31m
-CYAN = \033[0;36m
+GREEN = \033[0;92m
+RED = \033[0;91m
+CYAN = \033[0;96m
+BLUE = \033[0;94m
 RESET = \033[0m
 
 # RULES

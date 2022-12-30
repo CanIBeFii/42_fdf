@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:53:52 by fialexan          #+#    #+#             */
-/*   Updated: 2022/12/06 13:56:41 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/12/30 17:49:22 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_2Dcoord	*translate_3d_to_2d(t_3Dcoord *coords, t_2Dcoord *res, int size,
 		x_offset = mlx->width_offset * e;
 		e = (i / mlx->x);
 		y_offset = mlx->heigth_offset * e;
-		res[i] = transform_3Dcoord(coords[i], x_offset, y_offset);
+		res[i] = transform_3dcoord(coords[i], x_offset, y_offset);
 		i++;
 	}
 	return (res);

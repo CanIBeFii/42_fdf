@@ -6,7 +6,7 @@
 #    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 12:05:56 by fialexan          #+#    #+#              #
-#    Updated: 2022/12/30 16:03:33 by fialexan         ###   ########.fr        #
+#    Updated: 2022/12/30 18:07:12 by fialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,50 +39,52 @@ INCLUDES = -I $(HEADERS_DIRECTORY) -I $(LIBFT_HEADERS) -I $(MINILIBX_HEADERS)
 
 # COLORS
 
-GREEN = \033[0;32m
-RED = \033[0;31m
-CYAN = \033[0;36m
+GREEN = \033[0;92m
+RED = \033[0;91m
+CYAN = \033[0;96m
+BLUE = \033[0;94m
+YELLOW = \033[0;93m
 RESET = \033[0m
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MINILIBX) $(OBJECTS_DIRECTORY) $(OBJECTS)
-	@echo "\n$(GREEN)Starting compile$(RESET)"
+	@echo "\n\nStarting compile, now have some $(BLUE)colorful $(RED)text $(YELLOW)slayyyy$(RESET)"
 	@$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) $(LIBRARIES) -o $(NAME)
-	@echo "$(NAME): $(GREEN)object files were created$(RESET)"
-	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+	@echo "$(CYAN)$(NAME):$(RESET) $(GREEN)object files$(RESET) were created and have come to free us, $(YELLOW)monkeys$(RESET) united."
+	@echo "$(CYAN)$(NAME):$(RESET) $(GREEN)$(NAME)$(RESET) was created, like $(BLUE)god$(RESET) intended"
 
 $(OBJECTS_DIRECTORY):
 	@mkdir -p $(OBJECTS_DIRECTORY)
-	@echo "$(NAME): $(GREEN)$(OBJECTS_DIRECTORY) was created$(RESET)"
+	@echo "$(CYAN)$(NAME):$(RESET) $(GREEN)$(OBJECTS_DIRECTORY)$(RESET) was created"
 
 $(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.c $(HEADERS) 
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
 $(LIBFT):
-	@echo "$(NAME): $(GREEN)Creating $(LIBFT)$(RESET)"
+	@echo "$(CYAN)$(NAME): $(RESET)Creating $(GREEN)$(LIBFT)$(RESET)"
 	@make -sC $(LIBFT_DIRECTORY)
 
 $(MINILIBX):
-	@echo "$(NAME): $(GREEN)Creating $(MINILIBX)$(RESET)"
+	@echo "$(CYAN)$(NAME):$(RESET) Creating $(GREEN)$(MINILIBX)$(RESET) now a bunch of words will appear i have $(RED)no$(RESET) idea what they mean, but we $(YELLOW)roll$(RESET)"
 	@make -sC $(MINILIBX_DIRECTORY)
 
 clean:
 	@make -sC $(LIBFT_DIRECTORY) clean
 	#@make -sC $(MINILIBX_DIRECTORY) clean
 	@rm -rf $(OBJECTS_DIRECTORY)
-	@echo "$(NAME): $(RED)$(OBJECTS_DIRECTORY) was deleted$(RESET)"
-	@echo "$(NAME): $(RED)object files deleted$(RESET)"
+	@echo "$(CYAN)$(NAME): $(RED)$(OBJECTS_DIRECTORY)$(RESET) was deleted, *insert sadge emote*"
+	@echo "$(CYAN)$(NAME): $(RED)object files$(RESET) deleted, it was like Voldemort said *FETUS DELETUS*"
 
 fclean: clean
 	@rm -f $(MINILIBX)
-	@echo "$(NAME): $(RED)$(MINILIBX) was deleted$(RESET)"
+	@echo "$(CYAN)$(NAME): $(RED)$(MINILIBX)$(RESET) was deleted"
 	@rm -f $(LIBFT)
 	@make -sC $(LIBFT_DIRECTORY) fclean
-	@echo "$(NAME): $(RED)$(LIBFT) was deleted$(RESET)"
+	@echo "$(CYAN)$(NAME): $(RED)$(LIBFT)$(RESET) was deleted"
 	@rm -f $(NAME)
-	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
+	@echo "$(CYAN)$(NAME): $(RED)$(NAME) $(RESET)was deleted"
 
 re:
 	@make fclean
