@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:36:41 by fialexan          #+#    #+#             */
-/*   Updated: 2022/12/06 13:51:08 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/02 08:49:06 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int	get_t(int trgb)
+int	get_transparence(int trgb)
 {
 	return ((trgb >> 24) & 0xFF);
 }
 
-int	get_r(int trgb)
+int	get_red(int trgb)
 {
 	return ((trgb >> 16) & 0xFF);
 }
 
-int	get_g(int trgb)
+int	get_green(int trgb)
 {
 	return ((trgb >> 8) & 0xFF);
 }
 
-int	get_b(int trgb)
+int	get_blue(int trgb)
 {
 	return (trgb & 0xFF);
 }

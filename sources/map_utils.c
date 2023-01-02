@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:26:45 by filipe            #+#    #+#             */
-/*   Updated: 2022/11/30 15:09:43 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/02 09:04:49 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@
 int	get_map(char *filename, t_map *map)
 {
 	int		fd;
-	int		tmp;
+	int		temporary;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (0);
-	tmp = get_line_num(fd);
-	if (tmp == -1)
+	temporary = get_line_num(fd);
+	if (temporary == -1)
 		return (0);
-	map->y = tmp;
+	map->y = temporary;
 	close(fd);
 	map->map = get_map_str(filename, map->y);
 	if (map->map == NULL)
@@ -38,16 +38,16 @@ int	get_map(char *filename, t_map *map)
 
 int	get_line_size(char *line)
 {
-	int	i;
+	int	index;
 	int	line_size;
 
-	i = 0;
+	index = 0;
 	line_size = 0;
-	while (line[i] != '\n')
+	while (line[index] != '\n')
 	{
-		if (line[i] == ' ')
+		if (line[index] == ' ')
 			line_size++;
-		i++;
+		index++;
 	}
 	return (line_size + 1);
 }
@@ -74,20 +74,20 @@ int	get_line_num(int fd)
 char	**get_map_str(char *filename, int line_num)
 {
 	char	**map_str;
-	int		i;
+	int		index;
 	int		fd;
 
-	i = 0;
+	index = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
 	map_str = (char **)malloc(sizeof(char *) * line_num + 1);
 	if (map_str == NULL)
 		return (NULL);
-	while (i < line_num)
+	while (index < line_num)
 	{
-		map_str[i] = get_next_line(fd);
-		i++;
+		map_str[index] = get_next_line(fd);
+		index++;
 	}
 	return (map_str);
 }

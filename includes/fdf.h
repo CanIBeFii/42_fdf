@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:37:01 by fialexan          #+#    #+#             */
-/*   Updated: 2022/12/06 13:55:29 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/02 08:50:02 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,10 +161,10 @@ void		write_line_between_points(t_2Dcoord *points, t_map *map,
  */
 int			create_trgb(int t, int r, int g, int b);
 
-int			get_t(int trgb);
-int			get_r(int trgb);
-int			get_g(int trgb);
-int			get_b(int trgb);
+int			get_transparence(int trgb);
+int			get_red(int trgb);
+int			get_green(int trgb);
+int			get_blue(int trgb);
 
 // Coordinate
 
