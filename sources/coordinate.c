@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coordinate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:53:52 by fialexan          #+#    #+#             */
-/*   Updated: 2022/12/30 17:49:22 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/02 18:23:15 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 #include "libft.h"
 #include <math.h>
 
-t_2Dcoord	*get_all_points(t_map map, t_window *mlx)
+t_2Dcoord	*get_all_points(t_map map)
 {
 	t_3Dcoord	*coords_in_3d;
-	t_2Dcoord	*res;
+	t_2Dcoord	*return_coord;
 
 	coords_in_3d = malloc(sizeof(t_3Dcoord) * (map.x * map.y));
 	if (coords_in_3d == NULL)
 		return (NULL);
-	res = malloc(sizeof(t_2Dcoord) * (map.x * map.y));
-	if (res == NULL)
+	return_coord = malloc(sizeof(t_2Dcoord) * (map.x * map.y));
+	if (return_coord == NULL)
 		return (NULL);
 	coords_in_3d = translate_map_to_coords(map, coords_in_3d);
-	res = translate_3d_to_2d(coords_in_3d, res, map.x * map.y, mlx);
+	return_coord = translate_3d_to_2d(coords_in_3d, return_coord, map.x * map.y);
 	free(coords_in_3d);
-	return (res);
+	return (return_coord);
 }
 
 t_3Dcoord	*translate_map_to_coords(t_map map, t_3Dcoord *coords)
@@ -52,37 +52,24 @@ t_3Dcoord	*translate_map_to_coords(t_map map, t_3Dcoord *coords)
 	return (coords);
 }
 
-t_2Dcoord	*translate_3d_to_2d(t_3Dcoord *coords, t_2Dcoord *res, int size,
-		t_window *mlx)
+t_2Dcoord	*translate_3d_to_2d(t_3Dcoord *coords, t_2Dcoord *res, int size)
 {
-	int	i;
-	int	x_offset;
-	int	y_offset;
-	int	e;
+	int	index;
 
-	i = 0;
-	while (i < size)
+	index = 0;
+	while (index < size)
 	{
-		e = i % mlx->x;
-		x_offset = mlx->width_offset * e;
-		e = (i / mlx->x);
-		y_offset = mlx->heigth_offset * e;
-		res[i] = transform_3dcoord(coords[i], x_offset, y_offset);
-		i++;
+		res[index] = transform_3dcoord(coords[index]);
+		index++;
 	}
 	return (res);
 }
 
-t_2Dcoord	transform_3dcoord(t_3Dcoord coord, int x_offset, int y_offset)
+t_2Dcoord	transform_3dcoord(t_3Dcoord coord)
 {
 	t_2Dcoord	res;
 
-	res.x = coord.x + 50 + x_offset;
-	res.y = coord.y + 50 + y_offset;
+	res.x = (coord.x - coord.y) * cos(0.5236);
+	res.y = (coord.x + coord.y) * sin(0.5236) - coord.z;
 	return (res);
 }
-
-// res.x = (int)(50 + lround(coord.x + cos(M_PI_4) * 
-//	coord.z - cos(M_PI_4) * coord.y)) + x_offset;
-// res.y = (int)(50 + lround(-coord.y *
-// sin(M_PI_4) - coord.z * sin(M_PI_4))) + y_offset;

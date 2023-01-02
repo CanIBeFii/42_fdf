@@ -6,7 +6,7 @@
 /*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:37:01 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/02 08:50:02 by filipe           ###   ########.fr       */
+/*   Updated: 2023/01/02 18:24:37 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,22 +74,22 @@ typedef struct s_data {
  * 
  * @param mlx void *
  * @param mlx_win void *
- * @param data t_data
+ * @param data t_data *
+ * @param coords t_2dcoords *
  * @param window_width int
  * @param window_heigth int
- * @param width_offset int
- * @param heigth_offset int
+ * @param x int
+ * @param y int
  */
 typedef struct s_window {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	data;
-	int		window_width;
-	int		window_heigth;
-	int		width_offset;
-	int		heigth_offset;
-	int		x;
-	int		y;
+	void		*mlx;
+	void		*mlx_win;
+	t_data		*data;
+	t_2Dcoord	*coords;
+	int			window_width;
+	int			window_heigth;
+	int			x;
+	int			y;
 }	t_window;
 
 // Main
@@ -97,7 +97,8 @@ typedef struct s_window {
 /**
  * @brief Initializes mlx with the defaults values
  * 
- * @param mlx t_window
+ * @param mlx t_window *
+ * @param map t_map *
  */
 void		init_win(t_window *mlx, t_map *map);
 
@@ -173,12 +174,11 @@ int			get_blue(int trgb);
  * Transforms the 3D coordinates to 2D coordinates.
  * Returns a pointer to an array with all the coordinates.
  * 
- * @param map Map with the coordinate and the number of rows and lines
- * @param mlx Mlx with all additional information
+ * @param map Map with the coordinate and the number of rows and lines 
  * 
  * @return t_2Dcoord* 
  */
-t_2Dcoord	*get_all_points(t_map map, t_window *mlx);
+t_2Dcoord	*get_all_points(t_map map);
 
 /**
  * @brief Receives a map and transforms the char** to an array of 3D coordinates.
@@ -196,12 +196,11 @@ t_3Dcoord	*translate_map_to_coords(t_map map, t_3Dcoord *coords);
  * @param coords 	Array with the 3D coordinates to transform.
  * @param res 	Array of the 2D coordinates.
  * @param size	Size of the arrays.
- * @param mlx Mlx with all additional information
  * 
  * @return t_2Dcoord* 
  */
 t_2Dcoord	*translate_3d_to_2d(t_3Dcoord *coords, t_2Dcoord *res,
-				int size, t_window *mlx);
+				int size);
 
 /**
  * @brief Receives an 3D coordinate transforms it to an 2D coordinate with 
@@ -215,6 +214,6 @@ t_2Dcoord	*translate_3d_to_2d(t_3Dcoord *coords, t_2Dcoord *res,
  * 
  * @return t_2Dcoord 
  */
-t_2Dcoord	transform_3dcoord(t_3Dcoord coord, int x_offset, int y_offset);
+t_2Dcoord	transform_3dcoord(t_3Dcoord coord);
 
 #endif
