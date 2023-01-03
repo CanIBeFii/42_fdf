@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coordinate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:53:52 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/02 18:23:15 by filipe           ###   ########.fr       */
+/*   Updated: 2023/01/03 14:30:33 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ t_2Dcoord	*get_all_points(t_map map)
 	if (return_coord == NULL)
 		return (NULL);
 	coords_in_3d = translate_map_to_coords(map, coords_in_3d);
-	return_coord = translate_3d_to_2d(coords_in_3d, return_coord, map.x * map.y);
+	return_coord = translate_3d_to_2d(coords_in_3d, return_coord,
+			map.x * map.y);
 	free(coords_in_3d);
 	return (return_coord);
 }

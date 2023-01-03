@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/14 12:05:56 by fialexan          #+#    #+#              #
-#    Updated: 2022/12/30 18:07:12 by fialexan         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = fdf
 
 LIBFT_DIRECTORY = ./libft/
@@ -66,18 +54,18 @@ $(LIBFT):
 	@echo "$(CYAN)$(NAME): $(RESET)Creating $(GREEN)$(LIBFT)$(RESET)"
 	@make -sC $(LIBFT_DIRECTORY)
 
-$(MINILIBX):
+$(MINILIBX): ## adeus
 	@echo "$(CYAN)$(NAME):$(RESET) Creating $(GREEN)$(MINILIBX)$(RESET) now a bunch of words will appear i have $(RED)no$(RESET) idea what they mean, but we $(YELLOW)roll$(RESET)"
 	@make -sC $(MINILIBX_DIRECTORY)
 
-clean:
+clean: ## clean
 	@make -sC $(LIBFT_DIRECTORY) clean
 	#@make -sC $(MINILIBX_DIRECTORY) clean
 	@rm -rf $(OBJECTS_DIRECTORY)
 	@echo "$(CYAN)$(NAME): $(RED)$(OBJECTS_DIRECTORY)$(RESET) was deleted, *insert sadge emote*"
 	@echo "$(CYAN)$(NAME): $(RED)object files$(RESET) deleted, it was like Voldemort said *FETUS DELETUS*"
 
-fclean: clean
+fclean: clean ## Deep cleans 
 	@rm -f $(MINILIBX)
 	@echo "$(CYAN)$(NAME): $(RED)$(MINILIBX)$(RESET) was deleted"
 	@rm -f $(LIBFT)
@@ -86,8 +74,13 @@ fclean: clean
 	@rm -f $(NAME)
 	@echo "$(CYAN)$(NAME): $(RED)$(NAME) $(RESET)was deleted"
 
-re:
+re: ## Recompiles the project from scratch
 	@make fclean
 	@make all
+
+help:  ## show this help
+	@echo "usage: make [target]"
+	@echo ""
+	@egrep "^(.+)\:\ .*##\ (.+)" ${MAKEFILE_LIST} | sed 's/:.*##/#/' | column -t -c 2 -s '#'
 
 .PHONY	: re fclean clean all
