@@ -6,7 +6,7 @@
 /*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:37:01 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/02 18:24:37 by filipe           ###   ########.fr       */
+/*   Updated: 2023/01/13 12:05:06 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,21 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+// Defines
+
+# define ESC_KEY 65307
+
+// Movement keys
+
+# define LEFT_KEY 65361
+# define UP_KEY 65362
+# define RIGHT_KEY 65363
+# define DOWN_KEY 65364
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
 
 // Type
 
@@ -99,8 +114,9 @@ typedef struct s_window {
  * 
  * @param mlx t_window *
  * @param map t_map *
+ * @return int
  */
-void		init_win(t_window *mlx, t_map *map);
+int		init_win(t_window *mlx, t_map *map);
 
 // File_checker
 int			file_checker(int argc, char **argv);
@@ -215,5 +231,9 @@ t_2Dcoord	*translate_3d_to_2d(t_3Dcoord *coords, t_2Dcoord *res,
  * @return t_2Dcoord 
  */
 t_2Dcoord	transform_3dcoord(t_3Dcoord coord);
+
+// Key events
+
+void	key_press(int keycode, t_window *mlx);
 
 #endif
