@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:38:52 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/16 11:59:00 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:01:31 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	main(int argc, char **argv)
 	while (1)
 	{
 		mlx_key_hook(mlx.mlx_win, key_press, &mlx);
-		mlx_hook(mlx.mlx_win, 17, 0, close);
+		mlx_hook(mlx.mlx_win, 17, 0, shutdown_mlx, &mlx);
+		mlx_loop(mlx.mlx);
 	}
-	mlx_loop(mlx.mlx);
 	return (0);
 }
 
@@ -72,25 +72,4 @@ void	free_map(t_map *map)
 		index++;
 	}
 	free(map->map);
-}
-
-void	close_mlx(t_window *mlx)
-{
-	if (mlx != NULL)
-	{
-		if (mlx->data != NULL)
-		{
-			mlx_destroy_image(mlx->data->img);
-			free(mlx->data);
-		}
-		if (mlx->mlx_win != NULL)
-			mlx_destroy_window(mlx->mlx, mlx->mlx_win);
-		if (mlx->mlx != NULL)
-		{
-			mlx_destroy_display(mlx->mlx);
-			free(mlx->mlx);
-		}
-		if (mlx != NULL)
-			free(mlx);
-	}
 }

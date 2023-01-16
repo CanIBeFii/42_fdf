@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:37:01 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/16 12:00:32 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:55:46 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 
 // Defines
+# define SUCCESS 1
 
 # define ESC_KEY 65307
 
@@ -125,16 +126,35 @@ int			init_win(t_window *mlx, t_map *map);
  */
 void		free_map(t_map *map);
 
+// File_checker
+int			file_checker(int argc, char **argv);
+int			check_filename(char *filename);
+
+// Close mlx
+
 /**
  * @brief Frees all the memory of mlx 
  * 
  * @param mlx t_window*
  */
-void		close_mlx(t_window *mlx);
+void		free_mlx(t_window *mlx);
 
-// File_checker
-int			file_checker(int argc, char **argv);
-int			check_filename(char *filename);
+/**
+ * @brief Calls function close_mlx with the code SUCCESS
+ * 
+ * @param mlx t_window*
+ * @return int 
+ */
+int			shutdown_mlx(t_window *mlx);
+
+/**
+ * @brief Closes mlx and returns the error code received
+ * 
+ * @param mlx t_window*
+ * @param error_code int
+ * @return int 
+ */
+int			close_mlx(t_window *mlx, int error_code);
 
 // Map_Utils
 int			get_map(char *filename, t_map *map);
@@ -248,6 +268,12 @@ t_2Dcoord	transform_3dcoord(t_3Dcoord coord);
 
 // Key events
 
-void		key_press(int keycode, t_window *mlx);
+/**
+ * @brief Executes a diferent command depending of the key that was pressed
+ * 
+ * @param keycode int - Code of the key that was pressed
+ * @param params void* - Has the pointer to mlx
+ */
+int			key_press(int keycode, void *params);
 
 #endif
