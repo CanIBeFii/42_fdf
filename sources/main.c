@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:38:52 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/16 10:48:45 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/16 11:59:00 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 	if (init_win(&mlx, &map) == 0)
 		return (1);
 	mlx.coords = get_all_points(map);
+	free_map(&map);
 	mlx.mlx = mlx_init();
 	mlx.mlx_win = mlx_new_window(mlx.mlx, mlx.window_width,
 			mlx.window_heigth, "Fdf");
@@ -58,4 +59,38 @@ int	init_win(t_window *mlx, t_map *map)
 	mlx->x = map->x;
 	mlx->y = map->y;
 	return (1);
+}
+
+void	free_map(t_map *map)
+{
+	int	index;
+
+	index = 0;
+	while (index < map->y)
+	{
+		free(map->map[index]);
+		index++;
+	}
+	free(map->map);
+}
+
+void	close_mlx(t_window *mlx)
+{
+	if (mlx != NULL)
+	{
+		if (mlx->data != NULL)
+		{
+			mlx_destroy_image(mlx->data->img);
+			free(mlx->data);
+		}
+		if (mlx->mlx_win != NULL)
+			mlx_destroy_window(mlx->mlx, mlx->mlx_win);
+		if (mlx->mlx != NULL)
+		{
+			mlx_destroy_display(mlx->mlx);
+			free(mlx->mlx);
+		}
+		if (mlx != NULL)
+			free(mlx);
+	}
 }

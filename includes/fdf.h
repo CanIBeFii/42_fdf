@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:37:01 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/16 10:47:00 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:00:32 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,20 @@ typedef struct s_window {
  * @return int
  */
 int			init_win(t_window *mlx, t_map *map);
+
+/**
+ * @brief Frees the map with all the points
+ * 
+ * @param map t_map*
+ */
+void		free_map(t_map *map);
+
+/**
+ * @brief Frees all the memory of mlx 
+ * 
+ * @param mlx t_window*
+ */
+void		close_mlx(t_window *mlx);
 
 // File_checker
 int			file_checker(int argc, char **argv);
