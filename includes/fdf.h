@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:37:01 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 12:05:06 by filipe           ###   ########.fr       */
+/*   Updated: 2023/01/16 10:47:00 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # define ESC_KEY 65307
 
-// Movement keys
+//	Movement keys
 
 # define LEFT_KEY 65361
 # define UP_KEY 65362
@@ -116,7 +116,7 @@ typedef struct s_window {
  * @param map t_map *
  * @return int
  */
-int		init_win(t_window *mlx, t_map *map);
+int			init_win(t_window *mlx, t_map *map);
 
 // File_checker
 int			file_checker(int argc, char **argv);
@@ -234,6 +234,6 @@ t_2Dcoord	transform_3dcoord(t_3Dcoord coord);
 
 // Key events
 
-void	key_press(int keycode, t_window *mlx);
+void		key_press(int keycode, t_window *mlx);
 
 #endif

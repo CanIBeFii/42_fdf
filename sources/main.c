@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:38:52 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 12:13:15 by filipe           ###   ########.fr       */
+/*   Updated: 2023/01/16 10:48:45 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "fdf.h"
 #include <mlx.h>
 
+//put_all_points_in_window(mlx.coords, map.x * map.y, mlx.data);
 int	main(int argc, char **argv)
 {
 	t_window	mlx;
@@ -34,22 +35,18 @@ int	main(int argc, char **argv)
 	mlx.data->img = mlx_new_image(mlx.mlx, mlx.window_width, mlx.window_heigth);
 	mlx.data->addr = mlx_get_data_addr(mlx.data->img, &mlx.data->bits_per_pixel,
 			&mlx.data->line_length, &mlx.data->endian);
-	//put_all_points_in_window(mlx.coords, map.x * map.y, mlx.data);
 	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, mlx.data->img, 0, 0);
 	while (1)
 	{
 		mlx_key_hook(mlx.mlx_win, key_press, &mlx);
-		mlx_hook(mlx.mlx_win, 17, 0, close)
+		mlx_hook(mlx.mlx_win, 17, 0, close);
 	}
 	mlx_loop(mlx.mlx);
 	return (0);
 }
 
-
-
 int	init_win(t_window *mlx, t_map *map)
 {
-	
 	mlx->mlx = NULL;
 	mlx->mlx_win = NULL;
 	mlx->data = malloc(sizeof(t_data));
