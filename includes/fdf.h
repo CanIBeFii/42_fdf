@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:37:01 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/23 13:49:56 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:38:02 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ typedef struct s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		x_offset;
-	int		y_offset;
 }	t_data;
 
 /**
@@ -129,6 +127,13 @@ typedef struct s_window {
  * @return int
  */
 int			init_win(t_window *mlx, t_map *map);
+
+/**
+ * @brief Initializes data with the default values
+ * 
+ * @param mlx 
+ */
+void		init_data(t_window *mlx);
 
 /**
  * @brief Frees the map with all the points
@@ -235,7 +240,7 @@ int			get_blue(int trgb);
  * Transforms the 3D coordinates to 2D coordinates.
  * Returns a pointer to an array with all the coordinates.
  * 
- * @param map Map with the coordinate and the number of rows and lines 
+ * @param map t_map - Map with the coordinate and the number of rows and lines 
  * 
  * @return t_2Dcoord* 
  */
@@ -261,7 +266,7 @@ t_3Dcoord	*translate_map_to_coords(t_map map, t_3Dcoord *coords);
  * @return t_2Dcoord* 
  */
 t_2Dcoord	*translate_3d_to_2d(t_3Dcoord *coords, t_2Dcoord *res,
-				int size);
+				t_map map, int size);
 
 /**
  * @brief Receives an 3D coordinate transforms it to an 2D coordinate with 
@@ -275,7 +280,7 @@ t_2Dcoord	*translate_3d_to_2d(t_3Dcoord *coords, t_2Dcoord *res,
  * 
  * @return t_2Dcoord 
  */
-t_2Dcoord	transform_3dcoord(t_3Dcoord coord);
+t_2Dcoord	transform_3dcoord(t_3Dcoord coord, t_map map);
 
 // Key events
 
