@@ -21,7 +21,7 @@ OBJECTS_DIRECTORY = objects/
 OBJECTS = $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -g3
+FLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
 LIBRARIES = -L$(LIBFT_DIRECTORY) -lft -L$(MINILIBX_DIRECTORY) -lmlx_Linux -lXext -lX11 -lm
 INCLUDES = -I $(HEADERS_DIRECTORY) -I $(LIBFT_HEADERS) -I $(MINILIBX_HEADERS)
 
@@ -58,7 +58,7 @@ $(MINILIBX): ## adeus
 	@echo "$(CYAN)$(NAME):$(RESET) Creating $(GREEN)$(MINILIBX)$(RESET) now a bunch of words will appear i have $(RED)no$(RESET) idea what they mean, but we $(YELLOW)roll$(RESET)"
 	@make -sC $(MINILIBX_DIRECTORY)
 
-clean: ## clean
+clean: ## Cleans all the files from Libft and FdF
 	@make -sC $(LIBFT_DIRECTORY) clean
 	#@make -sC $(MINILIBX_DIRECTORY) clean
 	@rm -rf $(OBJECTS_DIRECTORY)

@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:37:01 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/16 12:55:46 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:49:56 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 // Defines
 # define SUCCESS 1
-
+# define WINDOW_WIDTH 960
+# define WINDOW_HEIGHT 540
 # define ESC_KEY 65307
 
 //	Movement keys
@@ -76,6 +77,14 @@ typedef struct s_map {
 /**
  * @brief Data of the image
  * 
+ * @param img void *
+ * @param addr char *
+ * @param bits_per_pixel int
+ * @param line_length int
+ * @param endian int
+ * @param x_offset int
+ * @param y_offset int
+ * 
  */
 typedef struct s_data {
 	void	*img;
@@ -83,6 +92,8 @@ typedef struct s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		x_offset;
+	int		y_offset;
 }	t_data;
 
 /**

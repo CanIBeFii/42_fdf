@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:38:52 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/16 13:01:31 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:10:04 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,6 @@ int	main(int argc, char **argv)
 		return (-1);
 	if (init_win(&mlx, &map) == 0)
 		return (1);
-	mlx.coords = get_all_points(map);
-	free_map(&map);
-	mlx.mlx = mlx_init();
-	mlx.mlx_win = mlx_new_window(mlx.mlx, mlx.window_width,
-			mlx.window_heigth, "Fdf");
-	mlx.data->img = mlx_new_image(mlx.mlx, mlx.window_width, mlx.window_heigth);
-	mlx.data->addr = mlx_get_data_addr(mlx.data->img, &mlx.data->bits_per_pixel,
-			&mlx.data->line_length, &mlx.data->endian);
 	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, mlx.data->img, 0, 0);
 	while (1)
 	{
@@ -48,17 +40,31 @@ int	main(int argc, char **argv)
 
 int	init_win(t_window *mlx, t_map *map)
 {
-	mlx->mlx = NULL;
-	mlx->mlx_win = NULL;
+	mlx->mlx = mlx_init();
+	mlx->mlx_win = mlx_new_window(mlx->mlx, WINDOW_WIDTH, WINDOW_HEIGHT,
+			"FDF");
 	mlx->data = malloc(sizeof(t_data));
 	if (mlx->data == NULL)
 		return (0);
 	mlx->coords = NULL;
-	mlx->window_heigth = 540;
-	mlx->window_width = 960;
+	mlx->window_heigth = WINDOW_HEIGHT;
+	mlx->window_width = WINDOW_WIDTH;
 	mlx->x = map->x;
 	mlx->y = map->y;
+	mlx->coords = get_all_points(*map);
+	free_map(map);
+	init_data(mlx);
 	return (1);
+}
+
+void	init_data(t_window *mlx)
+{
+	mlx->data->img = mlx_new_image(mlx->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	mlx->data->addr = mlx_get_data_addr(mlx->data->img,
+			&mlx->data->bits_per_pixel, &mlx->data->line_length,
+			&mlx->data->endian);
+	mlx->data->y_offset = WINDOW_HEIGHT / 10;
+	mlx->data->x_offset = WINDOW_WIDTH / 3;
 }
 
 void	free_map(t_map *map)

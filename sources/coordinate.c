@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:53:52 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/06 15:04:21 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/23 12:23:16 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_2Dcoord	transform_3dcoord(t_3Dcoord coord)
 {
 	t_2Dcoord	res;
 
-	res.x = (coord.x - coord.y) * cos(0.5236);
-	res.y = (coord.x + coord.y) * sin(0.5236) - coord.z;
+	res.x = (coord.x - coord.y) * cos(0.523599);
+	res.y = (coord.x + coord.y) * sin(0.523599) - coord.z;
 	return (res);
 }

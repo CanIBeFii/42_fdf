@@ -6,11 +6,12 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:35:27 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/16 12:57:56 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/23 12:07:00 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "libft.h"
 #include "mlx.h"
 
 int	close_mlx(t_window *mlx, int error_code)
@@ -40,8 +41,5 @@ void	free_mlx(t_window *mlx)
 			mlx_destroy_display(mlx->mlx);
 			free(mlx->mlx);
 		}
-		if (mlx != NULL)
-			free(mlx);
-		free(mlx);
 	}
 }
