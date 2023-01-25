@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:26:45 by filipe            #+#    #+#             */
-/*   Updated: 2023/01/25 11:24:18 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:16:12 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	get_line_size(char *line)
 	line_size = 0;
 	while (line[index] != '\n')
 	{
-		if (line[index] == ' ')
+		if (line[index] == ' ' && line[index - 1] != ' ')
 			line_size++;
 		index++;
 	}

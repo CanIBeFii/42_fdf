@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:53:52 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/25 11:31:48 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:50:57 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,26 @@ t_2Dcoord	*get_all_points(t_map map)
 
 t_3Dcoord	*translate_map_to_coords(t_map map, t_3Dcoord *coords)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	char	**line;
 
 	y = 0;
 	while (y < map.y)
 	{
+		line = ft_split(map.map[y], ' ');
 		x = 0;
 		while (x < map.x)
 		{
 			coords[y * map.x + x].x = x;
 			coords[y * map.x + x].y = y;
-			coords[y * map.x + x].z = map.map[y][x * 2] -'0';
+			coords[y * map.x + x].z = ft_atoi(line[x]);
+			free(line[x]);
 			x++;
 		}
+		free(line);
 		y++;
 	}
-	ft_printf("\n");
 	return (coords);
 }
 
@@ -85,13 +88,13 @@ t_2Dcoord	transform_3dcoord(t_3Dcoord coord, t_map map)
 	x = coord.x * offset;
 	y = coord.y * offset;
 	z = coord.z * offset;
-	if (coord.x == 1)
-		ft_printf("%d %d %d %d\n", x, y, z, coord.z);
+	if (coord.x == 3)
+		ft_printf("3D coords:%d %d %d\n%d\n\n", x, y, z, coord.z);
 	res.x = (int)round((x - y) * cos(0.523599));
 	res.y = (int)round((x + y) * sin(0.523599) - z);
 	res.x += (WINDOW_WIDTH / 2 - ((map.x / 2) * offset)) + WINDOW_WIDTH / 6;
-	res.y += (WINDOW_HEIGHT / 2 - ((map.y / 2) * offset));
-	if (coord.x == 1)
+	res.y += (WINDOW_HEIGHT / 2 - ((map.y / 2) * offset)) + WINDOW_HEIGHT / 2;
+	if (coord.x == 3)
 		ft_printf("%d %d\n\n", res.x, res.y);
 	return (res);
 }
