@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:37:01 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/23 15:38:02 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:14:23 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 // Defines
 # define SUCCESS 1
-# define WINDOW_WIDTH 960
-# define WINDOW_HEIGHT 540
+# define WINDOW_WIDTH 1820
+# define WINDOW_HEIGHT 1080
 # define ESC_KEY 65307
 
 //	Movement keys
