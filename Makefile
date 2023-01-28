@@ -12,7 +12,7 @@ HEADERS_LIST = fdf.h
 HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
-SOURCES_LIST = main.c map_utils.c file_checker.c window_management.c color.c coordinate.c key_events.c close_mlx.c bresenham.c
+SOURCES_LIST = main.c map_utils.c file_checker.c window_management.c coordinate.c key_events.c close_mlx.c bresenham.c
 SOURCES_DIRECTORY = ./sources/
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 

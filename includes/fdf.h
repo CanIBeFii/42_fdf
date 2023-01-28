@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:37:01 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/28 15:56:07 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:14:58 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,31 +211,6 @@ int			get_line_num(int fd);
  */
 void		my_mlx_pixel_put(t_data *data, t_2Dcoord coord, int color);
 
-/**
- * @brief Receives two 2D coordinates and creares a line between them using 
- * Bresenham's algorithm.
- * 
- * @param data 
- * @param begin 
- * @param end 
- * @param color 
- */
-void		write_line(t_data *data, t_2Dcoord *begin, t_2Dcoord *end,
-				int color);
-
-/**
- * @brief Puts all the points in the image.
- * 
- * @param points Array with all the points.
- * @param size Size of the array.
- * @param data Data of the image.
- */
-void		put_all_points_in_window(t_2Dcoord	*points, int size,
-				t_data *data);
-
-void		write_line_between_points(t_2Dcoord *points, t_map *map,
-				t_data *data);
-
 // Bresenham
 
 /**
@@ -266,25 +241,6 @@ void		bresenham_algo(t_2Dcoord begin, t_2Dcoord end, t_data *data);
  * @return t_bresenham 
  */
 t_bresenham	bresenham_init(t_2Dcoord begin, t_2Dcoord end);
-
-// Color
-
-/**
- * @brief Create a trgb object
- * 
- * @param t Transparent 
- * @param r Red
- * @param g Green
- * @param b Blue
- * 
- * @return int 
- */
-int			create_trgb(int t, int r, int g, int b);
-
-int			get_transparence(int trgb);
-int			get_red(int trgb);
-int			get_green(int trgb);
-int			get_blue(int trgb);
 
 // Coordinate
 
