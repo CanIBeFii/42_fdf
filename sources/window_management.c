@@ -6,12 +6,13 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:51:06 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/23 15:08:11 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:07:25 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "libft.h"
+#include "math.h"
 
 void	my_mlx_pixel_put(t_data *data, t_2Dcoord coord, int color)
 {

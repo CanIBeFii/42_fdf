@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:37:01 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/25 11:14:23 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:56:07 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 
 // Defines
 # define SUCCESS 1
-# define WINDOW_WIDTH 1820
-# define WINDOW_HEIGHT 1080
-# define ESC_KEY 65307
 
-//	Movement keys
+# define WINDOW_WIDTH 1500
+# define WINDOW_HEIGHT 1000
+
+//   Keys
+
+# define ESC_KEY 65307
 
 # define LEFT_KEY 65361
 # define UP_KEY 65362
@@ -46,6 +48,26 @@ typedef struct s_2Dcoord
 	int	x;
 	int	y;
 }	t_2Dcoord;
+
+/**
+ * @brief All variables for the bresenham's line algorithm
+ * 
+ * @param absolute_x
+ * @param absolute_y
+ * @param x_modifier
+ * @param y_modifier
+ * @param abs_diff
+ * @param abs_diff2x
+ */
+typedef struct s_bresenham
+{
+	int	absolute_x;
+	int	absolute_y;
+	int	x_modifier;
+	int	y_modifier;
+	int	abs_diff;
+	int	abs_diff2x;	
+}	t_bresenham;
 
 /**
  * @brief 3D coordinate
@@ -213,6 +235,37 @@ void		put_all_points_in_window(t_2Dcoord	*points, int size,
 
 void		write_line_between_points(t_2Dcoord *points, t_map *map,
 				t_data *data);
+
+// Bresenham
+
+/**
+ * @brief Uses the Bresenham's line algorithm to put all the points in 
+ * the window and connect them.
+ * 
+ * @param points t_2Dcoord *
+ * @param x int
+ * @param y int
+ * @param data t_data *
+ */
+void		bresenham(t_2Dcoord *points, int x, int y, t_data *data);
+
+/**
+ * @brief Executes the Bresenham's line algorithm between 2 points.
+ * 
+ * @param begin t_2Dcoord
+ * @param end t_2Dcoord
+ * @param data t_data
+ */
+void		bresenham_algo(t_2Dcoord begin, t_2Dcoord end, t_data *data);
+
+/**
+ * @brief Initializes all the variables needed for the Bresenham's line algorithm
+ * 
+ * @param begin t_2Dcoord 
+ * @param end t_2Dcoord
+ * @return t_bresenham 
+ */
+t_bresenham	bresenham_init(t_2Dcoord begin, t_2Dcoord end);
 
 // Color
 

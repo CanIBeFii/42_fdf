@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:38:52 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/23 15:33:28 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:09:18 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	main(int argc, char **argv)
 		return (-1);
 	if (init_win(&mlx, &map) == 0)
 		return (1);
-	put_all_points_in_window(mlx.coords, map.x * map.y, mlx.data);
+	//put_all_points_in_window(mlx.coords, map.x * map.y, mlx.data);
+	bresenham(mlx.coords, map.x, map.y, mlx.data);
 	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, mlx.data->img, 0, 0);
 	while (1)
 	{

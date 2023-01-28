@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:53:52 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/25 14:50:57 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:26:42 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,9 @@ t_2Dcoord	transform_3dcoord(t_3Dcoord coord, t_map map)
 	x = coord.x * offset;
 	y = coord.y * offset;
 	z = coord.z * offset;
-	if (coord.x == 3)
-		ft_printf("3D coords:%d %d %d\n%d\n\n", x, y, z, coord.z);
 	res.x = (int)round((x - y) * cos(0.523599));
 	res.y = (int)round((x + y) * sin(0.523599) - z);
-	res.x += (WINDOW_WIDTH / 2 - ((map.x / 2) * offset)) + WINDOW_WIDTH / 6;
-	res.y += (WINDOW_HEIGHT / 2 - ((map.y / 2) * offset)) + WINDOW_HEIGHT / 2;
-	if (coord.x == 3)
-		ft_printf("%d %d\n\n", res.x, res.y);
+	res.x += WINDOW_WIDTH / 2 - 50;
+	res.y += WINDOW_HEIGHT / 4;
 	return (res);
 }
