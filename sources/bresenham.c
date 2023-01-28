@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:23:05 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/28 16:10:07 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:20:45 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	bresenham_algo(t_2Dcoord begin, t_2Dcoord end, t_data *data)
 	t_bresenham	algo;
 
 	algo = bresenham_init(begin, end);
-	while (begin.x != end.x && begin.y != end.y)
+	while (begin.x != end.x || begin.y != end.y)
 	{
 		my_mlx_pixel_put(data, begin, 0x00FF0000);
 		algo.abs_diff2x = algo.abs_diff * 2;
