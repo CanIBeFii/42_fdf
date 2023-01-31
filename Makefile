@@ -12,7 +12,7 @@ HEADERS_LIST = fdf.h
 HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
-SOURCES_LIST = main.c map_utils.c file_checker.c window_management.c coordinate.c key_events.c close_mlx.c bresenham.c
+SOURCES_LIST = main.c map_utils.c file_checker.c window_management.c coordinate.c key_events.c bresenham.c
 SOURCES_DIRECTORY = ./sources/
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
@@ -60,7 +60,6 @@ $(MINILIBX): ## adeus
 
 clean: ## Cleans all the files from Libft and FdF
 	@make -sC $(LIBFT_DIRECTORY) clean
-	#@make -sC $(MINILIBX_DIRECTORY) clean
 	@rm -rf $(OBJECTS_DIRECTORY)
 	@echo "$(CYAN)$(NAME): $(RED)$(OBJECTS_DIRECTORY)$(RESET) was deleted, *insert sadge emote*"
 	@echo "$(CYAN)$(NAME): $(RED)object files$(RESET) deleted, it was like Voldemort said *FETUS DELETUS*"
