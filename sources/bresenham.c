@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:23:05 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/28 16:20:45 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:31:30 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,18 @@ void	bresenham_algo(t_2Dcoord begin, t_2Dcoord end, t_data *data)
 	t_bresenham	algo;
 
 	algo = bresenham_init(begin, end);
+	if (begin.x > WINDOW_WIDTH || begin.x < 0
+		|| begin.y > WINDOW_HEIGHT || begin.y < 0)
+		return ;
+	bresenham_loop(begin, end, data, algo);
+	if (begin.x < WINDOW_WIDTH && begin.x > 0
+		&& begin.y < WINDOW_HEIGHT && begin.y > 0)
+		my_mlx_pixel_put(data, begin, 0x00FF0000);
+}
+
+void	bresenham_loop(t_2Dcoord begin, t_2Dcoord end, t_data *data
+	, t_bresenham algo)
+{
 	while (begin.x != end.x || begin.y != end.y)
 	{
 		my_mlx_pixel_put(data, begin, 0x00FF0000);
@@ -55,8 +67,10 @@ void	bresenham_algo(t_2Dcoord begin, t_2Dcoord end, t_data *data)
 			algo.abs_diff += algo.absolute_x;
 			begin.y += algo.y_modifier;
 		}
+		if (begin.x > WINDOW_WIDTH || begin.x < 0
+			|| begin.y > WINDOW_HEIGHT || begin.y < 0)
+			break ;
 	}
-	my_mlx_pixel_put(data, begin, 0x00FF0000);
 }
 
 t_bresenham	bresenham_init(t_2Dcoord begin, t_2Dcoord end)
