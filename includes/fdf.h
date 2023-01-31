@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:37:01 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/28 16:14:58 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/31 15:32:02 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,6 @@
 //   Keys
 
 # define ESC_KEY 65307
-
-# define LEFT_KEY 65361
-# define UP_KEY 65362
-# define RIGHT_KEY 65363
-# define DOWN_KEY 65364
-# define W_KEY 119
-# define A_KEY 97
-# define S_KEY 115
-# define D_KEY 100
 
 // Type
 
@@ -104,8 +95,6 @@ typedef struct s_map {
  * @param bits_per_pixel int
  * @param line_length int
  * @param endian int
- * @param x_offset int
- * @param y_offset int
  * 
  */
 typedef struct s_data {
@@ -123,20 +112,12 @@ typedef struct s_data {
  * @param mlx_win void *
  * @param data t_data *
  * @param coords t_2dcoords *
- * @param window_width int
- * @param window_heigth int
- * @param x int
- * @param y int
  */
 typedef struct s_window {
 	void		*mlx;
 	void		*mlx_win;
 	t_data		*data;
 	t_2Dcoord	*coords;
-	int			window_width;
-	int			window_heigth;
-	int			x;
-	int			y;
 }	t_window;
 
 // Main
@@ -167,32 +148,6 @@ void		free_map(t_map *map);
 // File_checker
 int			file_checker(int argc, char **argv);
 int			check_filename(char *filename);
-
-// Close mlx
-
-/**
- * @brief Frees all the memory of mlx 
- * 
- * @param mlx t_window*
- */
-void		free_mlx(t_window *mlx);
-
-/**
- * @brief Calls function close_mlx with the code SUCCESS
- * 
- * @param mlx t_window*
- * @return int 
- */
-int			shutdown_mlx(t_window *mlx);
-
-/**
- * @brief Closes mlx and returns the error code received
- * 
- * @param mlx t_window*
- * @param error_code int
- * @return int 
- */
-int			close_mlx(t_window *mlx, int error_code);
 
 // Map_Utils
 int			get_map(char *filename, t_map *map);
@@ -232,6 +187,17 @@ void		bresenham(t_2Dcoord *points, int x, int y, t_data *data);
  * @param data t_data
  */
 void		bresenham_algo(t_2Dcoord begin, t_2Dcoord end, t_data *data);
+
+/**
+ * @brief Does the loop of the Bresenham's line algorithm.
+ * 
+ * @param begin 
+ * @param end 
+ * @param data 
+ * @param algo 
+ */
+void		bresenham_loop(t_2Dcoord begin, t_2Dcoord end,
+				t_data *data, t_bresenham algo);
 
 /**
  * @brief Initializes all the variables needed for the Bresenham's line algorithm
@@ -300,5 +266,29 @@ t_2Dcoord	transform_3dcoord(t_3Dcoord coord, t_map map);
  * @param params void* - Has the pointer to mlx
  */
 int			key_press(int keycode, void *params);
+
+/**
+ * @brief Frees all the memory of mlx 
+ * 
+ * @param mlx t_window*
+ */
+void		free_mlx(t_window *mlx);
+
+/**
+ * @brief Calls function close_mlx with the code SUCCESS
+ * 
+ * @param mlx t_window*
+ * @return int 
+ */
+int			shutdown_mlx(t_window *mlx);
+
+/**
+ * @brief Closes mlx and returns the error code received
+ * 
+ * @param mlx t_window*
+ * @param error_code int
+ * @return int 
+ */
+int			close_mlx(t_window *mlx, int error_code);
 
 #endif

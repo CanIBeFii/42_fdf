@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:53:52 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/31 11:13:17 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/31 15:31:38 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_2Dcoord	transform_3dcoord(t_3Dcoord coord, t_map map)
 	res.y = (WINDOW_HEIGHT / 2) - (map.y / 2) * offset;
 	res.x += (int)round((coord.x - coord.y) * cos(0.523599));
 	res.y += (int)round((coord.x + coord.y) * sin(0.523599) - coord.z);
-	res.x += WINDOW_WIDTH / 4;
+	res.x += WINDOW_WIDTH / 5;
 	res.y += WINDOW_HEIGHT / 10;
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:38:52 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/28 16:13:50 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/31 15:26:34 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ int	init_win(t_window *mlx, t_map *map)
 		return (0);
 	init_data(mlx);
 	mlx->coords = NULL;
-	mlx->window_heigth = WINDOW_HEIGHT;
-	mlx->window_width = WINDOW_WIDTH;
-	mlx->x = map->x;
-	mlx->y = map->y;
 	mlx->coords = get_all_points(*map);
 	free_map(map);
 	return (1);
