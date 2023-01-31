@@ -6,14 +6,12 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:05:08 by filipe            #+#    #+#             */
-/*   Updated: 2022/12/06 11:52:53 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:19:27 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "unistd.h"
 #include "fcntl.h"
-#include "stdlib.h"
 #include "../includes/fdf.h"
 
 int	file_checker(int argc, char **argv)
@@ -34,10 +32,16 @@ int	file_checker(int argc, char **argv)
 int	check_filename(char *filename)
 {
 	int	begin;
+	int	file_descriptor;
 
 	begin = ft_strlen(filename) - 1;
 	if (filename[begin] != 'f' || filename[begin - 1] != 'd'
 		|| filename[begin - 2] != 'f' || filename[begin - 3] != '.')
 		return (0);
+	file_descriptor = open(filename, O_RDONLY);
+	if (file_descriptor == -1)
+	{
+		ft_printf("File doesn't exist :(( You did a popo.\n");
+	}
 	return (1);
 }
