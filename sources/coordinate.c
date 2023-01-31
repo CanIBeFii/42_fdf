@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:53:52 by fialexan          #+#    #+#             */
-/*   Updated: 2023/01/28 13:26:42 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:13:17 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,22 @@ t_2Dcoord	*translate_3d_to_2d(t_3Dcoord *coords, t_2Dcoord *res,
 t_2Dcoord	transform_3dcoord(t_3Dcoord coord, t_map map)
 {
 	t_2Dcoord	res;
-	int			x;
-	int			y;
-	int			z;
 	int			offset;
 
-	if (WINDOW_WIDTH / map.x > WINDOW_HEIGHT / map.y)
+	if ((WINDOW_WIDTH / map.x / 2) > (WINDOW_HEIGHT / map.y / 2))
 		offset = WINDOW_HEIGHT / map.y / 2;
 	else
 		offset = WINDOW_WIDTH / map.x / 2;
 	if (offset < 1)
 		offset = 1;
-	x = coord.x * offset;
-	y = coord.y * offset;
-	z = coord.z * offset;
-	res.x = (int)round((x - y) * cos(0.523599));
-	res.y = (int)round((x + y) * sin(0.523599) - z);
-	res.x += WINDOW_WIDTH / 2 - 50;
-	res.y += WINDOW_HEIGHT / 4;
+	coord.x *= offset;
+	coord.y *= offset;
+	coord.z *= offset;
+	res.x = (WINDOW_WIDTH / 2) - (map.x / 2) * offset;
+	res.y = (WINDOW_HEIGHT / 2) - (map.y / 2) * offset;
+	res.x += (int)round((coord.x - coord.y) * cos(0.523599));
+	res.y += (int)round((coord.x + coord.y) * sin(0.523599) - coord.z);
+	res.x += WINDOW_WIDTH / 4;
+	res.y += WINDOW_HEIGHT / 10;
 	return (res);
 }
