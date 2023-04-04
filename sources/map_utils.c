@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:26:45 by filipe            #+#    #+#             */
-/*   Updated: 2023/01/25 14:16:12 by fialexan         ###   ########.fr       */
+/*   Updated: 2023/04/04 11:39:51 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ int	get_map(char *filename, t_map *map)
 
 int	get_line_size(char *line)
 {
-	int	index;
-	int	line_size;
+	int		index;
+	char	**temp;
 
 	index = 0;
-	line_size = 0;
-	while (line[index] != '\n')
+	temp = ft_split(line, ' ');
+	while (temp[index] != NULL)
 	{
-		if (line[index] == ' ' && line[index - 1] != ' ')
-			line_size++;
+		free(temp[index]);
 		index++;
 	}
-	return (line_size + 1);
+	free(temp);
+	return (index);
 }
 
 int	get_line_num(int fd)
